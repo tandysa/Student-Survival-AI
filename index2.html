@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Survival AI</title>
+<style>
+body { font-family: Arial; background:#f5f5f5; margin:0; }
+.container { max-width:420px; margin:20px auto; background:#fff; padding:15px; border-radius:10px; }
+h2 { text-align:center; }
+textarea, input { width:100%; margin:10px 0; padding:10px; }
+button { width:100%; padding:10px; margin-top:5px; }
+.output { margin-top:15px; background:#eee; padding:10px; border-radius:8px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Student Survival AI</h2>
+
+<h3>💬 Smart Reply</h3>
+<textarea id="msg" placeholder="Paste message..."></textarea>
+<button onclick="reply()">Generate Reply</button>
+<div id="replyOut" class="output"></div>
+
+<h3>🛒 Survival Planner</h3>
+<input type="number" id="budget" placeholder="Enter budget (e.g. 100)">
+<button onclick="plan()">Generate Plan</button>
+<div id="planOut" class="output"></div>
+</div>
+
+<script>
+function reply() {
+  const replies = [
+    "Ngibambekile kancane manje, ngizokutshela later 🥹",
+    "Busy nje manje kodwa ngizokuphendula ❤️",
+    "Ngizobuya kuwe nje, ngisaphakathi kwezinto 🥹"
+  ];
+  document.getElementById('replyOut').innerText = replies[Math.floor(Math.random()*replies.length)];
+}
+
+function plan() {
+  const money = parseInt(document.getElementById('budget').value);
+  let result = "";
+
+  if (money <= 50) {
+    result = "Buy maize meal + 2 eggs. Eat pap twice a day.";
+  } else if (money <= 100) {
+    result = "Buy maize meal, 6 eggs, cabbage. Eat pap + eggs for 3 days.";
+  } else {
+    result = "Buy maize meal, eggs, bread, peanut butter. Balanced survival for 4-5 days.";
+  }
+
+  document.getElementById('planOut').innerText = result;
+}
+</script>
+</body>
+</html>
