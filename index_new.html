@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Survival AI</title>
+<style>
+body {font-family: Arial;background: linear-gradient(135deg,#1e1e2f,#2c2c54);margin:0;color:#fff;}
+.container {max-width:420px;margin:20px auto;background:#2f2f4f;padding:20px;border-radius:15px;}
+input{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;}
+button{width:100%;padding:12px;border:none;border-radius:10px;background:#00c853;color:white;font-weight:bold;}
+.card{background:#3a3a5f;padding:12px;margin-top:10px;border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>💡 Student Survival AI</h2>
+<input type="number" id="budget" placeholder="Enter budget R50-R500">
+<button onclick="plan()">Generate Plan</button>
+<div id="output"></div>
+</div>
+<script>
+function plan(){
+const money=parseInt(document.getElementById("budget").value);
+if(!money||money<50||money>500){
+document.getElementById("output").innerHTML="<div class='card'>Enter valid budget</div>";
+return;}
+let staple=Math.round(money*0.45);
+let protein=Math.round(money*0.35);
+let extras=Math.round(money*0.20);
+let foods="",days="",meals="";
+if(money<=100){foods="Maize meal, eggs, cabbage";days="2-3 days";meals="Pap + eggs";}
+else if(money<=200){foods="Maize meal, eggs, veg, bread";days="4-5 days";meals="Bread morning, pap later";}
+else if(money<=300){foods="Maize meal, eggs, beans, veg, peanut butter";days="5-7 days";meals="Balanced";}
+else{foods="Maize meal, chicken, rice, eggs, veg";days="7 days";meals="Full meals";}
+document.getElementById("output").innerHTML=`
+<div class="card">Budget: R${money}</div>
+<div class="card">Staple: R${staple}<br>Protein: R${protein}<br>Extras: R${extras}</div>
+<div class="card">Foods: ${foods}</div>
+<div class="card">Duration: ${days}</div>
+<div class="card">Meals: ${meals}</div>`;}
+</script>
+</body>
+</html>
